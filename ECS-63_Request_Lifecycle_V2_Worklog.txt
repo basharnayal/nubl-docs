@@ -1,0 +1,52 @@
+# Worklog: ECS-63 Recipient Request Lifecycle (V2)
+Date: 2026-02-18
+
+## Overview
+Implemented the full lifecycle for Recipient Requests, including multi-item submission, provider review (adopt/approve/reject), and admin oversight.
+
+## Key Changes
+
+### Database
+1.  **Created `request_items` table:** Stores line items (menu item ID, quantity, price snapshot) for each request.
+2.  **Updated `requests` table:**
+    -   Removed single-item columns (`menu_item_id`, `quantity`, `price_snapshot`).
+    -   Added lifecycle columns: `reserved_amount`, `funding_source`, `rejection_reason_code`, `rejection_reason_note`.
+    -   Added `is_flagged` for future moderation.
+
+### Backend Logic
+1.  **Request Model:**
+    -   Added relationships: `items()`, `recipient()`, `provider()`.
+    -   Added Scopes: `forProvider`, `forRecipient`, `pendingAdmin`.
+    -   Added Accessor: `isReservationActive` to determine if allowance should be blocked.
+2.  **Recipient Request Controller:**
+    -   Refactored `store` method to handle multi-item validation and creation.
+    -   Implemented Weekly Allowance Check (400 SAR limit) using `reserved_amount`.
+3.  **Provider Request Controller:**
+    -   Implemented `update` method for `adopt` (Provider Funds), `approve` (City Funds), and `reject` actions.
+    -   Enforced access control (only pending requests, matching provider).
+4.  **Admin Request Controller:**
+    -   Implemented `index` queue for `ADMIN_PENDING` requests.
+    -   Implemented `update` for `approve` and `reject` actions.
+
+### Frontend (Blade Views)
+1.  **Recipient Menu (Provider Show):**
+    -   Implemented JavaScript-based Cart system.
+    -   Added "Add to Cart" modal with quantity selector.
+    -   Added "Review Request" sidebar with Weekly Allowance calculator.
+2.  **Recipient Requests:**
+    -   Created Index view (List of requests with status badges).
+    -   Created Show view (Details, Items table, Status timeline).
+3.  **Provider Requests:**
+    -   Created Index view (Incoming PENDING requests).
+    -   Created Show view with Action Buttons (Adopt, Approve, Reject with reason).
+4.  **Admin Request Queue:**
+    -   Created Index view with "Review" modal for quick approval/rejection.
+
+## Verification
+-   **RecipientRequestSubmissionTest:** Passing. Verifies multi-item submission, allowance limits, and item validation.
+-   **ProviderRequestFlowTest:** Passing. Verifies adopt/approve/reject workflows and access control.
+-   **AdminRequestFlowTest:** Passing. Verifies admin queue listing and actions.
+
+## Next Steps
+-   Implement QR Code generation for `ADOPTED`/`APPROVED` requests.
+-   Enhance Notification system (Email/SMS) for status changes.
