@@ -13,6 +13,15 @@
 | **NotificationController** | API لجلب الإشعارات وتحديد المقروء |
 | **notificationPanel** | مكوّن Alpine.js لعرض الإشعارات في الهيدر |
 
+### إشعارات الأدمن (قائمة المراجعة)
+
+| النوع (`type`) | متى يُرسل | الرابط الافتراضي |
+|----------------|-----------|------------------|
+| `account_approval_pending` | تسجيل مستفيد أو مزوّد جديد بحالة `pending_approval` | `admin.users.application` لمقدّم الطلب |
+| `documents_resubmitted_for_review` | انتقال الحالة من `rejected` إلى `pending_approval` (إعادة إرسال مستندات عبر `ResubmitApplicationController` أو أي تحديث يحقق هذا الانتقال) | نفس الرابط أعلاه |
+
+يُسجَّل النوعان في `config/notifications.php` ويُستدعَيان من `NotificationService` و`UserObserver` حسب الحالة.
+
 ---
 
 ## 2. إرسال إشعار للمستخدم
