@@ -184,8 +184,6 @@ When changing this feature, verify:
 4. **Locks** (`cache`, `wallet`, payout `lockForUpdate`) remain coherent for concurrency.
 5. **Migrations** for uniqueness are applied in fresh and upgrade paths.
 6. **Schedule** in `routes/console.php` matches deployment intent (weekly vs. local dev).
-=====================================
-
 
 
 Why we do not create FundTransaction OUT when the weekly payout request is generated
