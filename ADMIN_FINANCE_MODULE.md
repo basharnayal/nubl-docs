@@ -175,7 +175,7 @@ To **revert** to three-way donut (success / pending / failed), restore series/la
 
 ## Sidebar
 
-- **File:** `app/Main/SidebarPanel.php` → `admin_finances` submenu entries point to `admin.finances.overview`, `payments.index`, `fund-transactions.index`, `reports.index`.
+- **File:** `app/Support/SidebarPanel.php` → `admin_finances` submenu entries point to `admin.finances.overview`, `payments.index`, `fund-transactions.index`, `reports.index`.
 - **Labels:** `finance.nav.*` in JSON lang files.
 
 ---
@@ -208,7 +208,7 @@ To **revert** to three-way donut (success / pending / failed), restore series/la
 | Aggregates | `app/Http/Services/Admin/AdminFinancialService.php` |
 | Shared nav | `resources/views/admin/finances/_nav.blade.php` |
 | UI helpers | `app/Support/FinanceUi.php` |
-| Sidebar | `app/Main/SidebarPanel.php` |
+| Sidebar | `app/Support/SidebarPanel.php` |
 | i18n | `lang/en.json`, `lang/ar.json` (`finance.*`) |
 | Tests | `tests/Feature/Admin/AdminFinancialManagementTest.php` |
 

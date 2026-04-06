@@ -103,11 +103,15 @@ class DonationService
 | الكيان (entity) | الإجراءات (actions) | الموقع |
 |-----------------|---------------------|--------|
 | `user` | created, updated, deleted, deactivated, reactivated | UserService |
+| `registration` | completed | التسجيل الذاتي (متبرع / مستفيد / مزوّد): `RegisteredUserController`, `ProviderRegistrationController` — البيانات: `user_id`, `membership_type`, `requires_approval` (بدون بريد أو كلمة مرور) |
+| `application` | resubmitted | إعادة تقديم طلب بعد الرفض: `ResubmitApplicationController` — `user_id`, `membership_type` |
+| `auth` | login, logout, password_reset_completed, phone_verified, email_verified | تسجيل الدخول (كلمة مرور أو OTP)، تسجيل الخروج، إعادة تعيين كلمة المرور، التحقق من الجوال/البريد — `AuthenticatedSessionController`, `OtpLoginController`, `NewPasswordController`, `PhoneVerificationController`, `VerifyEmailController` — عادةً `user_id` و`method` للدخول (`password` \| `otp`) |
 | `account_approval` | approved, rejected | AccountApprovalController |
 | `menu_item` | created, updated, deactivated | MenuItemController |
 | `donation` | confirmed | DonationService |
 | `request` | created | RecipientRequestController |
 | `wallet` | donation_added, payout_to_provider | SystemWalletService |
+| `role` | created, updated, deleted | RoleManagementService |
 
 عند إضافة كيان جديد، استخدم أسماء واضحة بالإنجليزي مثل: `order`, `payment`, `notification`.
 

@@ -170,6 +170,17 @@ MYFATOORAH_IS_TEST=true
 2. إذا وُجد `FundTransaction` بنفس `payment_id` → redirect success فوراً
 3. فقط بعد اجتياز الفحصين يتم إنشاء fund_transaction
 
+### 7.1 مرونة Callback و ErrorUrl (Resilience)
+
+| الحالة | السلوك |
+|--------|---------|
+| استجابة MyFatoorah غير متوقعة أو فارغة | `MyFatoorahService` يرمي استثناءً واضحاً؛ `PaymentService` يسجّل audit ويوجّه لصفحة الفشل مع `payment_reason` مناسب |
+| شكل `getPaymentStatus` غير متوقع بعد نجاح الاستدعاء | تطبيع آمن في `normalizeGatewayStatusResult`؛ عند الفشل: توجيه مع `ambiguous` ومحاولة مطابقة الدفع بـ `external_payment_id` |
+| انقطاع/خطأ أثناء تحديث المحفظة أو الإشعار بعد تأكيد `Paid` | `try/catch` حول معالجة ما بعد التحقق؛ تسجيل `callback_processing_failed`؛ توجيه لصفحة الفشل مع `processing_error` (قد يحتاج المستخدم التحقق يدوياً) |
+| ErrorUrl مع فشل التحقق من البوابة | تعليم الدفع `FAILED` عند إمكانية مطابقة السجل؛ audit `error_url_verification_failed`؛ دائماً redirect لـ `donor.payments.failed` مع رسالة |
+
+**مفاتيح `payment_reason` في الجلسة (صفحة الفشل):** `api_unavailable`, `ambiguous`, `missing_callback`, `processing_error`, `payment_not_found`, `gateway_declined`, والافتراضي العام.
+
 ---
 
 ## 8. مصدر الحقيقة للرصيد
@@ -189,8 +200,11 @@ MYFATOORAH_IS_TEST=true
 | payment_initiated | PaymentService::initiateSponsorPayment |
 | gateway_initiated | PaymentService::redirectToGateway |
 | callback_received | PaymentService::handleCallback |
+| callback_unexpected_response | PaymentService::handleCallback (شكل استجابة غير متوقع) |
+| callback_processing_failed | PaymentService::handleCallback (خطأ بعد التحقق من البوابة) |
 | payment_succeeded | PaymentService::handleCallback |
 | payment_failed | PaymentService::handleCallback / handleError |
+| error_url_verification_failed | PaymentService::handleError |
 | wallet_donation_added | SystemWalletService::addFundsFromDonation |
 | payout_to_provider | SystemWalletService::transferToProviderForRequest |
 | allocation_created | AllocationService::allocateToRequest |

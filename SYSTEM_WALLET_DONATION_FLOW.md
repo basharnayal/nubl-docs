@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **system wallet** (Ewallet with `owner_type = SYSTEM`) is the city fund. It receives donations from donors and pays out to providers **when a City Fund request is redeemed (QR scanned)**.
+The **system wallet** (Ewallet with `owner_type = SYSTEM`) is the city fund. It receives donations from donors and pays out to providers when they approve requests with city fund.
 
 ## Balance Calculation
 
@@ -30,27 +30,12 @@ The `ewallets.balance` column is kept in sync by `FundTransactionObserver` — o
 | Action | Effect on city fund | Effect on provider wallet |
 |--------|---------------------|---------------------------|
 | **Adopt (My Fund)** | No change | No change (provider covers cost themselves) |
-| **Accept (City Fund)** | No change at accept | No change at accept |
-| **Redeem (QR scanned) – City Fund** | Deducts `reserved_amount` | Credits provider with `reserved_amount` |
+| **Approve (City Fund)** | Deducts `reserved_amount` | Credits provider with `reserved_amount` |
 
 When provider clicks **Accept (City Fund)**:
 1. Check system wallet has sufficient balance (`ewallets.balance`, kept in sync by `FundTransactionObserver`)
-2. Update request status to REDEEMABLE, funding_source to CITY_FUND
-3. Generate a redemption token (QR) for the recipient
-
-When the QR is **redeemed (scanned by provider)**:
-1. Validate the token (PENDING, not expired, belongs to provider)
-2. Mark redemption as REDEEMED
-3. Create `FundTransaction` records (OUT from system wallet, IN to provider wallet, source: PAYOUT) — observer updates both wallet balances
-
----
-
-## How the system knows a QR was scanned (Redemption)
-
-- **Scan UI**: `GET /provider/qr/scan` → `ProviderQrController@scan`
-- **Redeem API**: `POST /provider/qr/redeem` → `ProviderQrController@redeem`
-
-`ProviderQrController@redeem` looks up `OrderRedemption` by the submitted token (hash match), validates it, marks it `REDEEMED`, and (only for `funding_source === 'CITY_FUND'`) calls `SystemWalletService::transferToProviderForRequest()` to pay the provider.
+2. Create `FundTransaction` records (OUT from system wallet, IN to provider wallet, source: PAYOUT) — observer updates both wallet balances
+3. Update request status to REDEEMABLE, funding_source to CITY_FUND
 
 ---
 

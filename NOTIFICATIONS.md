@@ -19,8 +19,19 @@
 |----------------|-----------|------------------|
 | `account_approval_pending` | تسجيل مستفيد أو مزوّد جديد بحالة `pending_approval` | `admin.users.application` لمقدّم الطلب |
 | `documents_resubmitted_for_review` | انتقال الحالة من `rejected` إلى `pending_approval` (إعادة إرسال مستندات عبر `ResubmitApplicationController` أو أي تحديث يحقق هذا الانتقال) | نفس الرابط أعلاه |
+| `provider_payout_pending_review` | إنشاء طلب تحويل أسبوعي جديد للمزوّد (`ProviderPayoutGenerationService`) | `admin.finances.provider-payouts.show` |
 
-يُسجَّل النوعان في `config/notifications.php` ويُستدعَيان من `NotificationService` و`UserObserver` حسب الحالة.
+- **كل المستخدمين ذوي دور `admin`** يستلمون الإشعار (`User::role('admin')` ثم `notify` لكل منهم).
+- الإرسال عند أول تقديم: `NotificationService::sendNewUserRegisteredToAdmins()` من مساري تسجيل المستفيد والمزوّد (`RegisteredUserController`، `ProviderRegistrationController`) عند اكتمال التسجيل بحالة `pending_approval`.
+- إعادة التقديم بعد الرفض: `UserObserver` على `updated` عند انتقال الحالة من `rejected` إلى `pending_approval` → `sendDocumentsResubmittedForReviewToAdmins()`.
+
+يُسجَّل الأنواع في `config/notifications.php` ويُستدعَى من `NotificationService` و`UserObserver` و`ProviderPayoutGenerationService` حسب الحالة.
+
+### إشعار المزوّد (ليس للأدمن)
+
+| النوع (`type`) | متى يُرسل | الرابط الافتراضي |
+|----------------|-----------|------------------|
+| `provider_payout_transferred` | تأكيد الأدمن لتحويل بنكي للمزوّد (`ProviderPayoutConfirmationService`) | لوحة المزوّد (`provider.dashboard`) |
 
 ---
 
