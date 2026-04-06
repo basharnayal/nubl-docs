@@ -534,52 +534,82 @@ $user->removeRole('admin');
 
 ---
 
-## Permissions (Future Reference)
+## Permissions
 
-> **Note:** Permissions are defined in the system but not fully implemented yet. This section is for future reference.
+> **Full Arabic guide (architecture, lists, seeders, UI, audit):** [`docs/PERMISSIONS_AND_RBAC_AR.md`](PERMISSIONS_AND_RBAC_AR.md)
 
-### Permission Hierarchy
+Permissions are **fully defined in code** and **seeded into the database**. The canonical list lives in **`app/Permissions/PermissionDefinitions.php`** (`admin()`, `donor()`, `recipient()`, `provider()`, `all()`). **`database/seeders/PermissionSeeder.php`** creates every permission row; **`database/seeders/RoleSeeder.php`** assigns them to roles (admin gets all permissions; other roles get the subsets from `PermissionDefinitions`).
+
+### Permission hierarchy
 
 ```
 User
-  └── Role (admin, donor, recipient, provider)
-       └── Permissions (donations.create, requests.view, etc.)
+  └── Role (admin, donor, recipient, provider, …)
+       └── Permissions (string names, e.g. users.manage, qr.configure_ttl)
 ```
 
-### Available Permissions
+### Admin UI: roles & permissions
 
-**Admin Permissions:**
+- **URL:** `/admin/roles` (also under **Users → Roles & permissions** in the sidebar).
+- **Controller:** `App\Http\Controllers\Admin\RoleController`
+- **Service:** `App\Http\Services\RoleManagementService` (create/update/delete roles, sync permissions, clear Spatie cache, **audit logging**).
+- **Core roles** (`admin`, `donor`, `recipient`, `provider`) **cannot be deleted**; their **names** stay fixed; **permissions** can be edited. Custom roles can be created and deleted (if no users still use them).
+- **Audit:** `AuditService` records `role.created`, `role.updated`, `role.deleted` with context (IDs, permission lists). See **`docs/AUDIT_LOG_GUIDE_AR.md`**.
+- **UI labels:** `lang/en.json` and `lang/ar.json` use keys `rbac.permission.{permission_name}` for human-readable names in the checkbox grid.
+
+### How enforcement works today
+
+- **Routes:** Most areas use **`role:admin`** (or `role:donor`, etc.) via `EnsureRole` — see `routes/web.php` and `bootstrap/app.php` middleware aliases.
+- **`permission` middleware** is registered (`EnsurePermission`) but **not** used on route groups by default; you can add `permission:some.permission` when you want route-level checks.
+- **Fine-grained checks:** A few admin controllers call **`abort_unless($request->user()->can('…'), 403)`** in addition to the admin role:
+  - `qr.configure_ttl` — `QrSettingsController` (QR TTL settings)
+  - `allowances.configure` — `AllowanceSettingsController`
+  - `reports.export_csv` — `SummaryReportController` (summary reports download)
+- If you add a new `can('x.y')` check, add **`x.y`** to `PermissionDefinitions`, re-seed or create the permission in DB, and add **`rbac.permission.x.y`** in both JSON locales.
+
+### Available permissions (canonical)
+
+**Admin (`PermissionDefinitions::admin()`):**
+
 - `accounts.approve`, `requests.review`, `requests.approve`, `requests.reject`
-- `users.manage`, `users.assign.roles`, `roles.manage`, `permissions.manage`
-- `reports.export_csv`, `reports.export_pdf`, `allowances.configure`
-- And more...
+- `qr.configure_ttl`
+- `users.create`, `users.read`, `users.update`, `users.delete`, `users.manage`, `users.assign.roles`, `users.deactivate`, `users.reactivate`
+- `funds.create`, `funds.read`, `funds.update`, `funds.delete`
+- `policies.create`, `policies.read`, `policies.update`, `policies.delete`
+- `reports.export_csv`, `reports.export_pdf`
+- `allowances.configure`
+- `allocation.pause_global`, `allocation.pause_per_provider`
+- `roles.manage`, `permissions.manage`
 
-**Donor Permissions:**
+**Donor:**
+
 - `donations.process`, `dashboard.donor.view_stats`
 
-**Recipient Permissions:**
+**Recipient:**
+
 - `requests.submit`
 
-**Provider Permissions:**
+**Provider:**
+
 - `qr.redeem`, `fulfillment_proof.upload`, `requests.adopt`
 - `provider.capacity.toggle`, `provider.pickup_notes_and_hours.update`
 
-### Using Permissions (When Implemented)
+### Using permissions in code
 
 ```php
-// In Routes
-Route::middleware(['auth', 'permission:donations.create'])->group(function () {
-    // Routes here
+// Routes (optional — middleware alias registered in bootstrap/app.php)
+Route::middleware(['auth', 'account.approved', 'permission:roles.manage'])->group(function () {
+    // ...
 });
 
-// In Controllers
-if (!auth()->user()->can('donations.create')) {
+// Controllers
+if (! auth()->user()->can('roles.manage')) {
     abort(403);
 }
 
-// In Views
-@can('donations.create')
-    <button>Create Donation</button>
+// Blade
+@can('roles.manage')
+    <a href="{{ route('admin.roles.index') }}">Roles</a>
 @endcan
 ```
 
@@ -726,6 +756,11 @@ Essential Lineone Blade components (Alpine.js + Tailwind) for consistent UI acro
 
 ---
 
+## Provider bank payout (weekly settlement)
+
+Internal provider earnings are credited at **QR redemption** (`SystemWalletService::transferToProviderForRequest`) as ledger **IN** with source **`PAYOUT`**. Weekly **external bank** payouts are a separate admin-reviewed process: generation creates `provider_payouts` + `provider_payout_items` without wallet movement; **admin confirmation** creates one **`FundTransaction` OUT** with source **`PROVIDER_BANK_PAYOUT`**. See **`docs/PROVIDER_BANK_PAYOUT.md`**.
+
+---
 
 ## Provider Menu Management + Recipient Browsing (ECS-62)
 
