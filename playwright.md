@@ -18,7 +18,7 @@ npx playwright test tests/e2e/admin-dashboard.spec.js
 
 3. **تشغيل ملف واحد** (مثال):
    - `npx playwright test tests/e2e/example.spec.js`
-   - مع Laravel فقط: أضف `--config=playwright.php-only.config.js`
+   - مع Laravel فقط: أضف `--config=config/playwright/playwright.php-only.config.js`
 
 4. **واجهة تفاعلية أو متصفح ظاهر:**
    - `npm run test:e2e:ui` — واجهة Playwright للتشغيل والخطوات.
@@ -41,13 +41,13 @@ From the **repository root**, after `npm install` and `npx playwright install ch
 **Laravel only (no Vite):**
 
 ```bash
-npx playwright test tests/e2e/example.spec.js --config=playwright.php-only.config.js
+npx playwright test tests/e2e/example.spec.js --config=config/playwright/playwright.php-only.config.js
 ```
 
 **Full stack (Laravel + Vite, default config):**
 
 ```bash
-npx playwright test tests/e2e/example.spec.js
+npx playwright test tests/e2e/example.spec.js --config=config/playwright/playwright.config.js
 ```
 
 The default config needs **Node.js 20.19+ or 22.12+** so `npm run dev` (Vite 7) can start. If `npm run test:e2e` still fails with `Timed out waiting ... webServer` after upgrading Node, see [Vite `webServer` readiness](#vite-webserver-readiness-port-vs-url) and [Troubleshooting](#troubleshooting).
@@ -89,7 +89,7 @@ npx playwright install
 ### 3. Application prerequisites
 
 - **PHP / Laravel**: Tests expect the app to be reachable at the configured `baseURL` (see below). The Playwright configs can start `php artisan serve` for you; you still need a valid `.env`, database if the app requires it, etc.
-- **Node (default E2E config only)**: This repo uses **Vite 7**, which requires **Node.js 20.19+ or 22.12+**. Below that, `npm run dev` may exit immediately. Use **`playwright.php-only.config.js`** (or `npm run test:e2e:php-only`) until you upgrade Node, or run a production build if your tests do not need the dev server. The default `playwright.config.js` marks Vite as ready using **`port: 5173`** (TCP), not an HTTP probe on `/`, because the Vite dev server often returns **404** for `GET /`, which Playwright would otherwise treat as “not ready” until timeout.
+- **Node (default E2E config only)**: This repo uses **Vite 7**, which requires **Node.js 20.19+ or 22.12+**. Below that, `npm run dev` may exit immediately. Use **`config/playwright/playwright.php-only.config.js`** (or `npm run test:e2e:php-only`) until you upgrade Node, or run a production build if your tests do not need the dev server. The default `config/playwright/playwright.config.js` marks Vite as ready using **`port: 5173`** (TCP), not an HTTP probe on `/`, because the Vite dev server often returns **404** for `GET /`, which Playwright would otherwise treat as “not ready” until timeout.
 - **Node**: If npm prints `EBADENGINE` warnings, upgrade Node to satisfy Vite as above.
 
 ---
@@ -98,12 +98,12 @@ npx playwright install
 
 | File | Purpose |
 |------|---------|
-| `playwright.config.js` | **Default.** Starts Laravel on `127.0.0.1:8001` **and** Vite (`npm run dev`). Vite readiness uses **`port: 5173`** (see [below](#vite-webserver-readiness-port-vs-url)). |
-| `playwright.php-only.config.js` | Starts **only** `php artisan serve` on `127.0.0.1:8001`. Use when you do not need the Vite dev server or want a lighter run. |
+| `config/playwright/playwright.config.js` | **Default.** Starts Laravel on `127.0.0.1:8001` **and** Vite (`npm run dev`). Vite readiness uses **`port: 5173`** (see [below](#vite-webserver-readiness-port-vs-url)). |
+| `config/playwright/playwright.php-only.config.js` | Starts **only** `php artisan serve` on `127.0.0.1:8001`. Use when you do not need the Vite dev server or want a lighter run. |
 
 Both set:
 
-- `testDir: './tests/e2e'`
+- `testDir` → `tests/e2e` (resolved relative to the config file location)
 - `baseURL: 'http://127.0.0.1:8001'`
 - `PHONE_VERIFICATION_ENABLED` and `EMAIL_VERIFICATION_ENABLED` to `false` in the web server environment for more stable tests.
 
@@ -115,8 +115,8 @@ Defined in `package.json`:
 
 | Script | Command |
 |--------|---------|
-| `npm run test:e2e` | `playwright test` (uses default `playwright.config.js`; needs Node version compatible with Vite 7) |
-| `npm run test:e2e:php-only` | Same as `playwright test --config=playwright.php-only.config.js` (Laravel only; works on older Node) |
+| `npm run test:e2e` | `playwright test --config=config/playwright/playwright.config.js` (needs Node version compatible with Vite 7) |
+| `npm run test:e2e:php-only` | `playwright test --config=config/playwright/playwright.php-only.config.js` (Laravel only; works on older Node) |
 | `npm run test:e2e:ui` | Playwright UI mode |
 | `npm run test:e2e:headed` | Runs with a visible browser |
 
@@ -124,22 +124,22 @@ Defined in `package.json`:
 
 ## Choosing a config on the CLI
 
-Default config:
+Default config (explicit path — there is no `playwright.config.js` in the repo root):
 
 ```bash
-npx playwright test
+npx playwright test --config=config/playwright/playwright.config.js
 ```
 
 PHP-only config (example spec):
 
 ```bash
-npx playwright test tests/e2e/admin-dashboard.spec.js --config=playwright.php-only.config.js
+npx playwright test tests/e2e/admin-dashboard.spec.js --config=config/playwright/playwright.php-only.config.js
 ```
 
 Add `--headed` to see the browser:
 
 ```bash
-npx playwright test --config=playwright.php-only.config.js --headed
+npx playwright test --config=config/playwright/playwright.php-only.config.js --headed
 ```
 
 ---
@@ -166,7 +166,7 @@ Both configs use `reuseExistingServer: true`. If you already have `php artisan s
 
 ### CI vs local (`retries`, `workers`)
 
-The default `playwright.config.js` sets:
+The default `config/playwright/playwright.config.js` sets:
 
 - `retries: process.env.CI ? 2 : 0`
 - `workers: process.env.CI ? 1 : undefined`
@@ -187,7 +187,7 @@ npx playwright show-report
 
 ### Adding browsers or projects
 
-To run Firefox or WebKit, install them (`npx playwright install`) and add entries under `projects` in `playwright.config.js`, following [Playwright docs on projects](https://playwright.dev/docs/test-projects).
+To run Firefox or WebKit, install them (`npx playwright install`) and add entries under `projects` in `config/playwright/playwright.config.js`, following [Playwright docs on projects](https://playwright.dev/docs/test-projects).
 
 ### Environment variables for the app under test
 
@@ -201,7 +201,7 @@ Verification flags are disabled in the `webServer.env` block for predictable E2E
 |---------|-------------|
 | `Cannot find package '@playwright/test'` | Run `npm install` in the project root. |
 | Browser executable missing | Run `npx playwright install` or `npx playwright install chromium`. |
-| `Timed out waiting ... webServer` (default config) | **Node too old for Vite 7** (`npm run dev` exits): upgrade to **20.19+** or **22.12+**, or use `playwright.php-only.config.js` / `npm run test:e2e:php-only`. If Node is fine, ensure the Vite `webServer` does not rely on HTTP `GET /` (404 breaks Playwright’s readiness check); this repo uses **`port: 5173`** for Vite. |
+| `Timed out waiting ... webServer` (default config) | **Node too old for Vite 7** (`npm run dev` exits): upgrade to **20.19+** or **22.12+**, or use `config/playwright/playwright.php-only.config.js` / `npm run test:e2e:php-only`. If Node is fine, ensure the Vite `webServer` does not rely on HTTP `GET /` (404 breaks Playwright’s readiness check); this repo uses **`port: 5173`** for Vite. |
 | `[WebServer] Vite requires Node.js version 20.19+ or 22.12+` | Same as above: upgrade Node, or use the PHP-only Playwright config. |
 | Connection refused / wrong port | Match `baseURL` and server commands; ensure nothing else uses the same port or stop the conflicting process. |
 | Tests pass locally but fail in CI | Ensure CI runs `npm ci` or `npm install`, `npx playwright install --with-deps` (Linux) if needed, that the Node version satisfies Vite if you use the default config, and that `CI` env triggers the intended retries/workers. |

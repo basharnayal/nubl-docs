@@ -37,7 +37,7 @@ php artisan migrate
 1. **في الـ Controller أو الـ Service** — أضف `AuditService` في الـ constructor:
 
 ```php
-use App\Http\Services\AuditService;
+use App\Services\AuditService;
 
 class MyController extends Controller
 {
