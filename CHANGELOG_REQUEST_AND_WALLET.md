@@ -20,7 +20,7 @@ Summary of changes to request lifecycle, recipient allowance, and wallet/balance
 ```
 REQUESTED (recipient creates)
     ├── Adopt   → APPROVED (PROVIDER_ADOPTION, City Fund not affected)
-    ├── Accept  → REDEEMABLE (CITY_FUND, deducted from city fund)
+    ├── Accept  → REDEEMABLE (CITY_FUND, transfer executed on QR redemption)
     └── Reject  → REJECTED
 ```
 

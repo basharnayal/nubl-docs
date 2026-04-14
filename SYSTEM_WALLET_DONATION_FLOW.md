@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **system wallet** (Ewallet with `owner_type = SYSTEM`) is the city fund. It receives donations from donors and pays out to providers when they approve requests with city fund.
+The **system wallet** (Ewallet with `owner_type = SYSTEM`) is the city fund. It receives donations from donors and pays out to providers when they approve requests and redeem qr code with city fund.
 
 ## Balance Calculation
 
@@ -41,14 +41,14 @@ When provider clicks **Accept (City Fund)**:
 
 ## SystemWalletService
 
-**Location:** `app/Http/Services/SystemWalletService.php`
+**Location:** `app/Services/SystemWalletService.php`
 
 | Method | Description |
 |--------|-------------|
 | `addFundsFromDonation($amount, $donorId, $paymentId?)` | Creates a `FundTransaction` record (source: DONATION, direction: IN). `FundTransactionObserver` updates wallet balance. |
 | `getSystemWallet()` | Returns the system's default Ewallet |
 | `hasSufficientBalance($amount)` | Returns true if `ewallets.balance` ≥ amount (balance kept in sync by observer) |
-| `transferToProviderForRequest($request)` | Creates FundTransaction OUT (system) and IN (provider). Observer updates both wallet balances. |
+| `transferToProviderForRequest($request, $orderRedemptionId = null)` | Creates FundTransaction OUT (system) and IN (provider) for a City Fund request redemption. Observer updates both wallet balances. |
 
 ---
 

@@ -15,7 +15,7 @@ This document describes the automated tests for the Provider Request Flow featur
 | Action | Effect | Wallet impact |
 |--------|--------|---------------|
 | **Adopt (My Fund)** | Provider covers cost | No change to city fund or provider wallet |
-| **Approve (City Fund)** | Request paid from city fund | Deducts from system wallet, credits provider wallet |
+| **Accept (City Fund)** | Request becomes redeemable with a QR token | No immediate ledger transfer; wallet transfer occurs on successful QR redemption |
 | **Reject** | Request rejected with reason | No wallet change |
 
 See `docs/SYSTEM_WALLET_DONATION_FLOW.md` for full wallet flow details.
@@ -28,7 +28,7 @@ See `docs/SYSTEM_WALLET_DONATION_FLOW.md` for full wallet flow details.
 |------|-------------|
 | **provider_can_view_incoming_requests** | Provider can view the requests index and see recipient name and amount. |
 | **provider_can_adopt_request** | Adopt action updates status to `APPROVED`, funding_source to `PROVIDER_ADOPTION`. No wallet changes. CITY_FUND not affected. |
-| **provider_can_approve_request** | Approve (accept) action updates status to `REDEEMABLE`, funding_source to `CITY_FUND`. Deducts from city fund (transfers to provider wallet). |
+| **provider_can_approve_request** | Accept (City Fund) action updates status to `REDEEMABLE`, funding_source to `CITY_FUND`, and creates a QR redemption token. **No ledger transfer happens at accept time**; the transfer is executed on successful QR redemption. |
 | **provider_cannot_approve_when_city_fund_has_insufficient_balance** | When system wallet balance (10 SAR) is less than `reserved_amount` (50 SAR), approve is blocked. Request stays `REQUESTED`, session has error. |
 | **provider_can_reject_request_with_reason** | Reject action updates status to `REJECTED` with `rejection_reason_code` and `rejection_reason_note`. |
 | **provider_cannot_act_on_non_pending_request** | Actions (adopt, approve, reject) are only allowed when request status is `REQUESTED`. Non-pending requests return error. |

@@ -846,7 +846,7 @@ The Request Lifecycle V2 introduces a multi-item request system with a complete 
     - `APPROVED` (PROVIDER_ADOPTION), `REJECTED`, and `CANCELLED` requests do NOT count towards the limit.
 - **Provider Workflow:**
     - **Adopt:** Provider funds the request (`PROVIDER_ADOPTION` source). Status -> `APPROVED`. CITY_FUND not affected.
-    - **Approve (Accept):** Provider accepts with City Fund (`CITY_FUND` source). Status -> `REDEEMABLE`. Deducted from city fund (transfers to provider wallet).
+    - **Approve (Accept):** Provider accepts with City Fund (`CITY_FUND` source). Status -> `REDEEMABLE`. **No immediate ledger transfer at accept time**; the City Fund → provider transfer is executed on successful QR redemption.
     - **Reject:** Provider rejects request with a reason code and note. Status -> `REJECTED`.
 - **Admin Workflow:**
     - Admins review requests in `ADMIN_PENDING` status.
