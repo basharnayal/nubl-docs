@@ -1,0 +1,1722 @@
+{
+    "generated_at": "2026-04-21T17:51:47+00:00",
+    "baseline": {
+        "line_pct": 85.13186029935852,
+        "line_covered": 5972,
+        "line_total": 7015,
+        "method_metric_pct": 72.88888888888889,
+        "method_metric_covered": 492,
+        "method_metric_total": 675,
+        "method_by_line_pct": 92.14814814814815,
+        "method_by_line_covered": 622,
+        "method_by_line_total": 675
+    },
+    "line_gaps": [
+        {
+            "path": "app\\Http\\Controllers\\Admin\\AdminFundTransactionController.php",
+            "priority": "P0",
+            "line_pct": 18.29268292682927,
+            "covered_statements": 15,
+            "statements": 82,
+            "uncovered_stmt_count": 67,
+            "methods_metric": "2/6",
+            "method_pct_metric": 33.33333333333333,
+            "method_pct_by_line": 50,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Provider\\ProviderWalletController.php",
+            "priority": "P0",
+            "line_pct": 31.57894736842105,
+            "covered_statements": 6,
+            "statements": 19,
+            "uncovered_stmt_count": 13,
+            "methods_metric": "0/2",
+            "method_pct_metric": 0,
+            "method_pct_by_line": 50,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Jobs\\ProcessRecipientAllowanceRetryJob.php",
+            "priority": "P0",
+            "line_pct": 33.33333333333333,
+            "covered_statements": 19,
+            "statements": 57,
+            "uncovered_stmt_count": 38,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "handle() success/failure, retry/idempotency behavior"
+        },
+        {
+            "path": "app\\Services\\UserService.php",
+            "priority": "P0",
+            "line_pct": 38.349514563106794,
+            "covered_statements": 79,
+            "statements": 206,
+            "uncovered_stmt_count": 127,
+            "methods_metric": "8/13",
+            "method_pct_metric": 61.53846153846154,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Jobs\\ProcessRecipientFundRetryJob.php",
+            "priority": "P0",
+            "line_pct": 38.775510204081634,
+            "covered_statements": 19,
+            "statements": 49,
+            "uncovered_stmt_count": 30,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "handle() success/failure, retry/idempotency behavior"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\AdminPaymentController.php",
+            "priority": "P0",
+            "line_pct": 38.80597014925373,
+            "covered_statements": 26,
+            "statements": 67,
+            "uncovered_stmt_count": 41,
+            "methods_metric": "3/5",
+            "method_pct_metric": 60,
+            "method_pct_by_line": 80,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Provider\\MenuItemController.php",
+            "priority": "P0",
+            "line_pct": 44.086021505376344,
+            "covered_statements": 41,
+            "statements": 93,
+            "uncovered_stmt_count": 52,
+            "methods_metric": "2/7",
+            "method_pct_metric": 28.57142857142857,
+            "method_pct_by_line": 71.42857142857143,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Support\\RecipientRequestStatusPresenter.php",
+            "priority": "P0",
+            "line_pct": 45.751633986928105,
+            "covered_statements": 70,
+            "statements": 153,
+            "uncovered_stmt_count": 83,
+            "methods_metric": "3/10",
+            "method_pct_metric": 30,
+            "method_pct_by_line": 50,
+            "test_type": "Unit",
+            "focus": "fallbacks and branch permutations"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Donor\\DonationController.php",
+            "priority": "P0",
+            "line_pct": 47.82608695652174,
+            "covered_statements": 11,
+            "statements": 23,
+            "uncovered_stmt_count": 12,
+            "methods_metric": "2/5",
+            "method_pct_metric": 40,
+            "method_pct_by_line": 40,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\UserManagementController.php",
+            "priority": "P0",
+            "line_pct": 48.333333333333336,
+            "covered_statements": 29,
+            "statements": 60,
+            "uncovered_stmt_count": 31,
+            "methods_metric": "7/11",
+            "method_pct_metric": 63.63636363636363,
+            "method_pct_by_line": 72.72727272727273,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Recipient\\ProviderMenuController.php",
+            "priority": "P1",
+            "line_pct": 50,
+            "covered_statements": 21,
+            "statements": 42,
+            "uncovered_stmt_count": 21,
+            "methods_metric": "0/2",
+            "method_pct_metric": 0,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Models\\RequestPaymentLink.php",
+            "priority": "P1",
+            "line_pct": 50,
+            "covered_statements": 1,
+            "statements": 2,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 50,
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Services\\SmsService.php",
+            "priority": "P1",
+            "line_pct": 50,
+            "covered_statements": 11,
+            "statements": 22,
+            "uncovered_stmt_count": 11,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\AdminAllocationController.php",
+            "priority": "P1",
+            "line_pct": 56.25,
+            "covered_statements": 9,
+            "statements": 16,
+            "uncovered_stmt_count": 7,
+            "methods_metric": "5/6",
+            "method_pct_metric": 83.33333333333334,
+            "method_pct_by_line": 83.33333333333334,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Provider\\ProviderProofController.php",
+            "priority": "P1",
+            "line_pct": 57.57575757575758,
+            "covered_statements": 38,
+            "statements": 66,
+            "uncovered_stmt_count": 28,
+            "methods_metric": "1/3",
+            "method_pct_metric": 33.33333333333333,
+            "method_pct_by_line": 66.66666666666666,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Requests\\Auth\\LoginRequest.php",
+            "priority": "P1",
+            "line_pct": 65.21739130434783,
+            "covered_statements": 15,
+            "statements": 23,
+            "uncovered_stmt_count": 8,
+            "methods_metric": "4/5",
+            "method_pct_metric": 80,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "rules(), authorize(), conditional branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\ProviderPayoutController.php",
+            "priority": "P1",
+            "line_pct": 65.3061224489796,
+            "covered_statements": 64,
+            "statements": 98,
+            "uncovered_stmt_count": 34,
+            "methods_metric": "1/8",
+            "method_pct_metric": 12.5,
+            "method_pct_by_line": 62.5,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php",
+            "priority": "P1",
+            "line_pct": 66.66666666666666,
+            "covered_statements": 2,
+            "statements": 3,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "0/1",
+            "method_pct_metric": 0,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Middleware\\EnsurePhoneVerified.php",
+            "priority": "P1",
+            "line_pct": 66.66666666666666,
+            "covered_statements": 6,
+            "statements": 9,
+            "uncovered_stmt_count": 3,
+            "methods_metric": "0/1",
+            "method_pct_metric": 0,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "allow/deny redirects and passthrough flow"
+        },
+        {
+            "path": "app\\Models\\FundTransaction.php",
+            "priority": "P1",
+            "line_pct": 66.66666666666666,
+            "covered_statements": 4,
+            "statements": 6,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "4/6",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 66.66666666666666,
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Models\\OrderRedemption.php",
+            "priority": "P1",
+            "line_pct": 66.66666666666666,
+            "covered_statements": 2,
+            "statements": 3,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "2/3",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 66.66666666666666,
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Http\\Controllers\\ProfileController.php",
+            "priority": "P1",
+            "line_pct": 68.64406779661016,
+            "covered_statements": 81,
+            "statements": 118,
+            "uncovered_stmt_count": 37,
+            "methods_metric": "4/8",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 75,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Provider\\ProviderProfileController.php",
+            "priority": "P1",
+            "line_pct": 69.23076923076923,
+            "covered_statements": 36,
+            "statements": 52,
+            "uncovered_stmt_count": 16,
+            "methods_metric": "3/4",
+            "method_pct_metric": 75,
+            "method_pct_by_line": 75,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\MaintenanceSettingsController.php",
+            "priority": "P1",
+            "line_pct": 71.42857142857143,
+            "covered_statements": 35,
+            "statements": 49,
+            "uncovered_stmt_count": 14,
+            "methods_metric": "3/6",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Models\\ProviderProfile.php",
+            "priority": "P1",
+            "line_pct": 73.68421052631578,
+            "covered_statements": 14,
+            "statements": 19,
+            "uncovered_stmt_count": 5,
+            "methods_metric": "4/6",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 83.33333333333334,
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Services\\PaymentService.php",
+            "priority": "P1",
+            "line_pct": 74.01574803149606,
+            "covered_statements": 188,
+            "statements": 254,
+            "uncovered_stmt_count": 66,
+            "methods_metric": "3/9",
+            "method_pct_metric": 33.33333333333333,
+            "method_pct_by_line": 88.88888888888889,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Models\\ProviderMenuItem.php",
+            "priority": "P2",
+            "line_pct": 75,
+            "covered_statements": 12,
+            "statements": 16,
+            "uncovered_stmt_count": 4,
+            "methods_metric": "5/6",
+            "method_pct_metric": 83.33333333333334,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Models\\RecipientKycDetails.php",
+            "priority": "P2",
+            "line_pct": 75,
+            "covered_statements": 3,
+            "statements": 4,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 50,
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Providers\\RateLimiterServiceProvider.php",
+            "priority": "P2",
+            "line_pct": 75.32467532467533,
+            "covered_statements": 58,
+            "statements": 77,
+            "uncovered_stmt_count": 19,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "branch and edge coverage"
+        },
+        {
+            "path": "app\\Support\\RequestTypeLabel.php",
+            "priority": "P2",
+            "line_pct": 76.19047619047619,
+            "covered_statements": 16,
+            "statements": 21,
+            "uncovered_stmt_count": 5,
+            "methods_metric": "0/1",
+            "method_pct_metric": 0,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "fallbacks and branch permutations"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\FinancialReportController.php",
+            "priority": "P2",
+            "line_pct": 76.92307692307693,
+            "covered_statements": 20,
+            "statements": 26,
+            "uncovered_stmt_count": 6,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Auth\\ProviderRegistrationController.php",
+            "priority": "P2",
+            "line_pct": 77.77777777777779,
+            "covered_statements": 77,
+            "statements": 99,
+            "uncovered_stmt_count": 22,
+            "methods_metric": "1/4",
+            "method_pct_metric": 25,
+            "method_pct_by_line": 75,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Auth\\PhoneVerificationController.php",
+            "priority": "P2",
+            "line_pct": 78.94736842105263,
+            "covered_statements": 30,
+            "statements": 38,
+            "uncovered_stmt_count": 8,
+            "methods_metric": "1/5",
+            "method_pct_metric": 20,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\NotificationController.php",
+            "priority": "P2",
+            "line_pct": 79.41176470588235,
+            "covered_statements": 27,
+            "statements": 34,
+            "uncovered_stmt_count": 7,
+            "methods_metric": "1/4",
+            "method_pct_metric": 25,
+            "method_pct_by_line": 50,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Models\\ProviderOperatingInfo.php",
+            "priority": "P2",
+            "line_pct": 80,
+            "covered_statements": 4,
+            "statements": 5,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 50,
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Models\\ProviderPayout.php",
+            "priority": "P2",
+            "line_pct": 80,
+            "covered_statements": 16,
+            "statements": 20,
+            "uncovered_stmt_count": 4,
+            "methods_metric": "5/9",
+            "method_pct_metric": 55.55555555555556,
+            "method_pct_by_line": 55.55555555555556,
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Observers\\UserObserver.php",
+            "priority": "P2",
+            "line_pct": 80,
+            "covered_statements": 8,
+            "statements": 10,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "branch and edge coverage"
+        },
+        {
+            "path": "app\\Rules\\SaudiPhoneUnique.php",
+            "priority": "P2",
+            "line_pct": 80,
+            "covered_statements": 8,
+            "statements": 10,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "branch and edge coverage"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\AdminMenuController.php",
+            "priority": "P2",
+            "line_pct": 80.76923076923077,
+            "covered_statements": 42,
+            "statements": 52,
+            "uncovered_stmt_count": 10,
+            "methods_metric": "1/3",
+            "method_pct_metric": 33.33333333333333,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Models\\User.php",
+            "priority": "P2",
+            "line_pct": 80.95238095238095,
+            "covered_statements": 34,
+            "statements": 42,
+            "uncovered_stmt_count": 8,
+            "methods_metric": "16/22",
+            "method_pct_metric": 72.72727272727273,
+            "method_pct_by_line": 77.27272727272727,
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Notifications\\AccountStatusUpdatedNotification.php",
+            "priority": "P2",
+            "line_pct": 82.85714285714286,
+            "covered_statements": 29,
+            "statements": 35,
+            "uncovered_stmt_count": 6,
+            "methods_metric": "3/4",
+            "method_pct_metric": 75,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "via()/toMail()/toArray() per event branch"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Auth\\VerifyEmailController.php",
+            "priority": "P2",
+            "line_pct": 83.33333333333334,
+            "covered_statements": 10,
+            "statements": 12,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "1/3",
+            "method_pct_metric": 33.33333333333333,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Services\\OtpService.php",
+            "priority": "P2",
+            "line_pct": 83.87096774193549,
+            "covered_statements": 78,
+            "statements": 93,
+            "uncovered_stmt_count": 15,
+            "methods_metric": "7/11",
+            "method_pct_metric": 63.63636363636363,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\AccountApprovalController.php",
+            "priority": "P2",
+            "line_pct": 84.70588235294117,
+            "covered_statements": 72,
+            "statements": 85,
+            "uncovered_stmt_count": 13,
+            "methods_metric": "5/9",
+            "method_pct_metric": 55.55555555555556,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Services\\ResubmitApplicationService.php",
+            "priority": "P2",
+            "line_pct": 84.7560975609756,
+            "covered_statements": 139,
+            "statements": 164,
+            "uncovered_stmt_count": 25,
+            "methods_metric": "4/7",
+            "method_pct_metric": 57.14285714285714,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Services\\RedemptionService.php",
+            "priority": "P2",
+            "line_pct": 84.93150684931507,
+            "covered_statements": 62,
+            "statements": 73,
+            "uncovered_stmt_count": 11,
+            "methods_metric": "1/3",
+            "method_pct_metric": 33.33333333333333,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Http\\Middleware\\EnsureEmailVerified.php",
+            "priority": "P2",
+            "line_pct": 85.71428571428571,
+            "covered_statements": 6,
+            "statements": 7,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "0/1",
+            "method_pct_metric": 0,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "allow/deny redirects and passthrough flow"
+        },
+        {
+            "path": "app\\Http\\Middleware\\RedirectByRole.php",
+            "priority": "P2",
+            "line_pct": 85.71428571428571,
+            "covered_statements": 12,
+            "statements": 14,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "0/1",
+            "method_pct_metric": 0,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "allow/deny redirects and passthrough flow"
+        },
+        {
+            "path": "app\\Http\\Requests\\Recipient\\StoreRecipientRequest.php",
+            "priority": "P2",
+            "line_pct": 86.36363636363636,
+            "covered_statements": 38,
+            "statements": 44,
+            "uncovered_stmt_count": 6,
+            "methods_metric": "2/3",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "rules(), authorize(), conditional branches"
+        },
+        {
+            "path": "app\\Console\\Commands\\GenerateWeeklyProviderPayoutsCommand.php",
+            "priority": "P2",
+            "line_pct": 87.5,
+            "covered_statements": 7,
+            "statements": 8,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "0/1",
+            "method_pct_metric": 0,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "artisan command outputs + branch conditions"
+        },
+        {
+            "path": "app\\Helpers\\PhoneHelper.php",
+            "priority": "P2",
+            "line_pct": 88.23529411764706,
+            "covered_statements": 30,
+            "statements": 34,
+            "uncovered_stmt_count": 4,
+            "methods_metric": "2/6",
+            "method_pct_metric": 33.33333333333333,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "branch and edge coverage"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Auth\\OtpLoginController.php",
+            "priority": "P2",
+            "line_pct": 88.88888888888889,
+            "covered_statements": 40,
+            "statements": 45,
+            "uncovered_stmt_count": 5,
+            "methods_metric": "1/3",
+            "method_pct_metric": 33.33333333333333,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Requests\\Auth\\UpdateResubmitApplicationRequest.php",
+            "priority": "P2",
+            "line_pct": 89.28571428571429,
+            "covered_statements": 75,
+            "statements": 84,
+            "uncovered_stmt_count": 9,
+            "methods_metric": "2/4",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "rules(), authorize(), conditional branches"
+        },
+        {
+            "path": "app\\Notifications\\AccountApprovalPendingNotification.php",
+            "priority": "P2",
+            "line_pct": 89.47368421052632,
+            "covered_statements": 17,
+            "statements": 19,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "2/3",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "via()/toMail()/toArray() per event branch"
+        },
+        {
+            "path": "app\\Notifications\\NewUserRegisteredNotification.php",
+            "priority": "P2",
+            "line_pct": 89.47368421052632,
+            "covered_statements": 17,
+            "statements": 19,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "2/3",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "via()/toMail()/toArray() per event branch"
+        },
+        {
+            "path": "app\\Services\\NotificationService.php",
+            "priority": "P2",
+            "line_pct": 89.65517241379311,
+            "covered_statements": 26,
+            "statements": 29,
+            "uncovered_stmt_count": 3,
+            "methods_metric": "5/8",
+            "method_pct_metric": 62.5,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Recipient\\RecipientRequestController.php",
+            "priority": "P3",
+            "line_pct": 90.2439024390244,
+            "covered_statements": 74,
+            "statements": 82,
+            "uncovered_stmt_count": 8,
+            "methods_metric": "3/6",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 83.33333333333334,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Console\\Commands\\BackfillMenuItemCategories.php",
+            "priority": "P3",
+            "line_pct": 90.625,
+            "covered_statements": 29,
+            "statements": 32,
+            "uncovered_stmt_count": 3,
+            "methods_metric": "0/1",
+            "method_pct_metric": 0,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "artisan command outputs + branch conditions"
+        },
+        {
+            "path": "app\\Services\\ProviderPayoutLedgerService.php",
+            "priority": "P3",
+            "line_pct": 90.9090909090909,
+            "covered_statements": 20,
+            "statements": 22,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "6/7",
+            "method_pct_metric": 85.71428571428571,
+            "method_pct_by_line": 85.71428571428571,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Auth\\RegisteredUserController.php",
+            "priority": "P3",
+            "line_pct": 91.01123595505618,
+            "covered_statements": 81,
+            "statements": 89,
+            "uncovered_stmt_count": 8,
+            "methods_metric": "4/6",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Support\\FinancialMath.php",
+            "priority": "P3",
+            "line_pct": 91.66666666666666,
+            "covered_statements": 11,
+            "statements": 12,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "4/5",
+            "method_pct_metric": 80,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "fallbacks and branch permutations"
+        },
+        {
+            "path": "app\\Services\\AllocationEngineService.php",
+            "priority": "P3",
+            "line_pct": 92.10526315789474,
+            "covered_statements": 35,
+            "statements": 38,
+            "uncovered_stmt_count": 3,
+            "methods_metric": "6/9",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 77.77777777777779,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Console\\Commands\\VerifyActivityLogIntegrityCommand.php",
+            "priority": "P3",
+            "line_pct": 92.3076923076923,
+            "covered_statements": 24,
+            "statements": 26,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "0/1",
+            "method_pct_metric": 0,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "artisan command outputs + branch conditions"
+        },
+        {
+            "path": "app\\Notifications\\NewPendingAdminRequestNotification.php",
+            "priority": "P3",
+            "line_pct": 92.3076923076923,
+            "covered_statements": 12,
+            "statements": 13,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "2/3",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 66.66666666666666,
+            "test_type": "Unit",
+            "focus": "via()/toMail()/toArray() per event branch"
+        },
+        {
+            "path": "app\\Http\\Requests\\Provider\\UpdateMenuItemRequest.php",
+            "priority": "P3",
+            "line_pct": 92.5925925925926,
+            "covered_statements": 25,
+            "statements": 27,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "rules(), authorize(), conditional branches"
+        },
+        {
+            "path": "app\\Notifications\\RequestStatusChangedNotification.php",
+            "priority": "P3",
+            "line_pct": 92.5925925925926,
+            "covered_statements": 50,
+            "statements": 54,
+            "uncovered_stmt_count": 4,
+            "methods_metric": "4/5",
+            "method_pct_metric": 80,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "via()/toMail()/toArray() per event branch"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Provider\\ProviderQrController.php",
+            "priority": "P3",
+            "line_pct": 93.33333333333333,
+            "covered_statements": 14,
+            "statements": 15,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "2/3",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 66.66666666666666,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Middleware\\EnsureAccountApproved.php",
+            "priority": "P3",
+            "line_pct": 93.33333333333333,
+            "covered_statements": 14,
+            "statements": 15,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "0/1",
+            "method_pct_metric": 0,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "allow/deny redirects and passthrough flow"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php",
+            "priority": "P3",
+            "line_pct": 93.75,
+            "covered_statements": 30,
+            "statements": 32,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "3/4",
+            "method_pct_metric": 75,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\AuditLogController.php",
+            "priority": "P3",
+            "line_pct": 93.93939393939394,
+            "covered_statements": 31,
+            "statements": 33,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "0/1",
+            "method_pct_metric": 0,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Donor\\DonorDashboardController.php",
+            "priority": "P3",
+            "line_pct": 94.11764705882352,
+            "covered_statements": 112,
+            "statements": 119,
+            "uncovered_stmt_count": 7,
+            "methods_metric": "0/4",
+            "method_pct_metric": 0,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Notifications\\DocumentsResubmittedForReviewNotification.php",
+            "priority": "P3",
+            "line_pct": 94.73684210526315,
+            "covered_statements": 18,
+            "statements": 19,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "2/3",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "via()/toMail()/toArray() per event branch"
+        },
+        {
+            "path": "app\\Models\\Request.php",
+            "priority": "P3",
+            "line_pct": 95.23809523809523,
+            "covered_statements": 20,
+            "statements": 21,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "10/11",
+            "method_pct_metric": 90.9090909090909,
+            "method_pct_by_line": 90.9090909090909,
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Observers\\RequestObserver.php",
+            "priority": "P3",
+            "line_pct": 95.23809523809523,
+            "covered_statements": 20,
+            "statements": 21,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "2/3",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "branch and edge coverage"
+        },
+        {
+            "path": "app\\Observers\\FundTransactionObserver.php",
+            "priority": "P3",
+            "line_pct": 95.45454545454545,
+            "covered_statements": 21,
+            "statements": 22,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "branch and edge coverage"
+        },
+        {
+            "path": "app\\Services\\ProviderPayoutConfirmationService.php",
+            "priority": "P3",
+            "line_pct": 95.50561797752809,
+            "covered_statements": 85,
+            "statements": 89,
+            "uncovered_stmt_count": 4,
+            "methods_metric": "1/4",
+            "method_pct_metric": 25,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Http\\Requests\\Provider\\StoreMenuItemRequest.php",
+            "priority": "P3",
+            "line_pct": 96.29629629629629,
+            "covered_statements": 26,
+            "statements": 27,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "rules(), authorize(), conditional branches"
+        },
+        {
+            "path": "app\\Services\\ProviderPayoutGenerationService.php",
+            "priority": "P3",
+            "line_pct": 96.3855421686747,
+            "covered_statements": 80,
+            "statements": 83,
+            "uncovered_stmt_count": 3,
+            "methods_metric": "3/5",
+            "method_pct_metric": 60,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Services\\RecipientRequestSubmissionService.php",
+            "priority": "P3",
+            "line_pct": 96.61016949152543,
+            "covered_statements": 57,
+            "statements": 59,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "2/3",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Services\\AllocationService.php",
+            "priority": "P3",
+            "line_pct": 96.84210526315789,
+            "covered_statements": 92,
+            "statements": 95,
+            "uncovered_stmt_count": 3,
+            "methods_metric": "4/6",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Services\\LandingPageStatsService.php",
+            "priority": "P3",
+            "line_pct": 96.92307692307692,
+            "covered_statements": 126,
+            "statements": 130,
+            "uncovered_stmt_count": 4,
+            "methods_metric": "12/14",
+            "method_pct_metric": 85.71428571428571,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Support\\ProviderDisplay.php",
+            "priority": "P3",
+            "line_pct": 97.05882352941177,
+            "covered_statements": 33,
+            "statements": 34,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "8/9",
+            "method_pct_metric": 88.88888888888889,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "fallbacks and branch permutations"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Auth\\ResubmitApplicationController.php",
+            "priority": "P3",
+            "line_pct": 97.2972972972973,
+            "covered_statements": 36,
+            "statements": 37,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "6/7",
+            "method_pct_metric": 85.71428571428571,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Services\\MyFatoorahService.php",
+            "priority": "P3",
+            "line_pct": 97.2972972972973,
+            "covered_statements": 36,
+            "statements": 37,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "2/3",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Services\\RecipientAllowanceService.php",
+            "priority": "P3",
+            "line_pct": 97.46835443037975,
+            "covered_statements": 77,
+            "statements": 79,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "7/8",
+            "method_pct_metric": 87.5,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Http\\Queries\\Admin\\AdminFundTransactionIndexQuery.php",
+            "priority": "P3",
+            "line_pct": 97.5609756097561,
+            "covered_statements": 40,
+            "statements": 41,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "branch and edge coverage"
+        },
+        {
+            "path": "app\\Services\\SystemWalletService.php",
+            "priority": "P3",
+            "line_pct": 97.61904761904762,
+            "covered_statements": 82,
+            "statements": 84,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "4/5",
+            "method_pct_metric": 80,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Services\\Admin\\AdminFinancialService.php",
+            "priority": "P3",
+            "line_pct": 97.88732394366197,
+            "covered_statements": 139,
+            "statements": 142,
+            "uncovered_stmt_count": 3,
+            "methods_metric": "1/2",
+            "method_pct_metric": 50,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Services\\Admin\\SummaryReportExportService.php",
+            "priority": "P3",
+            "line_pct": 98.0544747081712,
+            "covered_statements": 252,
+            "statements": 257,
+            "uncovered_stmt_count": 5,
+            "methods_metric": "13/15",
+            "method_pct_metric": 86.66666666666667,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Http\\Requests\\Auth\\StoreProviderRegistrationRequest.php",
+            "priority": "P3",
+            "line_pct": 98.14814814814815,
+            "covered_statements": 53,
+            "statements": 54,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "4/5",
+            "method_pct_metric": 80,
+            "method_pct_by_line": 100,
+            "test_type": "Unit",
+            "focus": "rules(), authorize(), conditional branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\AdminRequestController.php",
+            "priority": "P3",
+            "line_pct": 98.38709677419355,
+            "covered_statements": 61,
+            "statements": 62,
+            "uncovered_stmt_count": 1,
+            "methods_metric": "2/3",
+            "method_pct_metric": 66.66666666666666,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Provider\\ProviderRequestController.php",
+            "priority": "P3",
+            "line_pct": 98.63945578231292,
+            "covered_statements": 145,
+            "statements": 147,
+            "uncovered_stmt_count": 2,
+            "methods_metric": "3/4",
+            "method_pct_metric": 75,
+            "method_pct_by_line": 100,
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        }
+    ],
+    "method_gaps": [
+        {
+            "path": "app\\Http\\Controllers\\Donor\\DonationController.php",
+            "method_total": 5,
+            "method_covered": 2,
+            "method_pct_by_line": 40,
+            "uncovered_methods": [
+                {
+                    "name": "index",
+                    "line": 16
+                },
+                {
+                    "name": "receipt",
+                    "line": 27
+                },
+                {
+                    "name": "create",
+                    "line": 39
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\AdminFundTransactionController.php",
+            "method_total": 6,
+            "method_covered": 3,
+            "method_pct_by_line": 50,
+            "uncovered_methods": [
+                {
+                    "name": "show",
+                    "line": 31
+                },
+                {
+                    "name": "resolveAuditEntries",
+                    "line": 50
+                },
+                {
+                    "name": "exportPdf",
+                    "line": 123
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\NotificationController.php",
+            "method_total": 4,
+            "method_covered": 2,
+            "method_pct_by_line": 50,
+            "uncovered_methods": [
+                {
+                    "name": "markAsRead",
+                    "line": 37
+                },
+                {
+                    "name": "markAllAsRead",
+                    "line": 50
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Provider\\ProviderWalletController.php",
+            "method_total": 2,
+            "method_covered": 1,
+            "method_pct_by_line": 50,
+            "uncovered_methods": [
+                {
+                    "name": "index",
+                    "line": 15
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Models\\ProviderOperatingInfo.php",
+            "method_total": 2,
+            "method_covered": 1,
+            "method_pct_by_line": 50,
+            "uncovered_methods": [
+                {
+                    "name": "user",
+                    "line": 30
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Models\\RecipientKycDetails.php",
+            "method_total": 2,
+            "method_covered": 1,
+            "method_pct_by_line": 50,
+            "uncovered_methods": [
+                {
+                    "name": "user",
+                    "line": 42
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Models\\RequestPaymentLink.php",
+            "method_total": 2,
+            "method_covered": 1,
+            "method_pct_by_line": 50,
+            "uncovered_methods": [
+                {
+                    "name": "payment",
+                    "line": 21
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Support\\RecipientRequestStatusPresenter.php",
+            "method_total": 10,
+            "method_covered": 5,
+            "method_pct_by_line": 50,
+            "uncovered_methods": [
+                {
+                    "name": "fulfilled",
+                    "line": 128
+                },
+                {
+                    "name": "rejected",
+                    "line": 147
+                },
+                {
+                    "name": "adminRejected",
+                    "line": 166
+                },
+                {
+                    "name": "cancelled",
+                    "line": 186
+                },
+                {
+                    "name": "adminApproved",
+                    "line": 225
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "fallbacks and branch permutations"
+        },
+        {
+            "path": "app\\Models\\ProviderPayout.php",
+            "method_total": 9,
+            "method_covered": 5,
+            "method_pct_by_line": 55.55555555555556,
+            "uncovered_methods": [
+                {
+                    "name": "confirmedBy",
+                    "line": 82
+                },
+                {
+                    "name": "rejectedBy",
+                    "line": 87
+                },
+                {
+                    "name": "cancelledBy",
+                    "line": 92
+                },
+                {
+                    "name": "fundTransactionOut",
+                    "line": 97
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\ProviderPayoutController.php",
+            "method_total": 8,
+            "method_covered": 5,
+            "method_pct_by_line": 62.5,
+            "uncovered_methods": [
+                {
+                    "name": "index",
+                    "line": 23
+                },
+                {
+                    "name": "show",
+                    "line": 50
+                },
+                {
+                    "name": "receiptFile",
+                    "line": 89
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Provider\\ProviderProofController.php",
+            "method_total": 3,
+            "method_covered": 2,
+            "method_pct_by_line": 66.66666666666666,
+            "uncovered_methods": [
+                {
+                    "name": "index",
+                    "line": 21
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Provider\\ProviderQrController.php",
+            "method_total": 3,
+            "method_covered": 2,
+            "method_pct_by_line": 66.66666666666666,
+            "uncovered_methods": [
+                {
+                    "name": "scan",
+                    "line": 16
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Models\\FundTransaction.php",
+            "method_total": 6,
+            "method_covered": 4,
+            "method_pct_by_line": 66.66666666666666,
+            "uncovered_methods": [
+                {
+                    "name": "orderRedemption",
+                    "line": 69
+                },
+                {
+                    "name": "providerPayout",
+                    "line": 74
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Models\\OrderRedemption.php",
+            "method_total": 3,
+            "method_covered": 2,
+            "method_pct_by_line": 66.66666666666666,
+            "uncovered_methods": [
+                {
+                    "name": "provider",
+                    "line": 35
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Notifications\\NewPendingAdminRequestNotification.php",
+            "method_total": 3,
+            "method_covered": 2,
+            "method_pct_by_line": 66.66666666666666,
+            "uncovered_methods": [
+                {
+                    "name": "via",
+                    "line": 21
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "via()/toMail()/toArray() per event branch"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Provider\\MenuItemController.php",
+            "method_total": 7,
+            "method_covered": 5,
+            "method_pct_by_line": 71.42857142857143,
+            "uncovered_methods": [
+                {
+                    "name": "index",
+                    "line": 24
+                },
+                {
+                    "name": "create",
+                    "line": 59
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\UserManagementController.php",
+            "method_total": 11,
+            "method_covered": 8,
+            "method_pct_by_line": 72.72727272727273,
+            "uncovered_methods": [
+                {
+                    "name": "create",
+                    "line": 49
+                },
+                {
+                    "name": "edit",
+                    "line": 71
+                },
+                {
+                    "name": "rolesForUserForms",
+                    "line": 97
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Auth\\ProviderRegistrationController.php",
+            "method_total": 4,
+            "method_covered": 3,
+            "method_pct_by_line": 75,
+            "uncovered_methods": [
+                {
+                    "name": "showApplication",
+                    "line": 54
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\ProfileController.php",
+            "method_total": 8,
+            "method_covered": 6,
+            "method_pct_by_line": 75,
+            "uncovered_methods": [
+                {
+                    "name": "uploadPhoto",
+                    "line": 91
+                },
+                {
+                    "name": "syncProfilePhoto",
+                    "line": 106
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Provider\\ProviderProfileController.php",
+            "method_total": 4,
+            "method_covered": 3,
+            "method_pct_by_line": 75,
+            "uncovered_methods": [
+                {
+                    "name": "edit",
+                    "line": 22
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Models\\User.php",
+            "method_total": 22,
+            "method_covered": 17,
+            "method_pct_by_line": 77.27272727272727,
+            "uncovered_methods": [
+                {
+                    "name": "providerPayouts",
+                    "line": 100
+                },
+                {
+                    "name": "scopeActive",
+                    "line": 177
+                },
+                {
+                    "name": "scopeInactive",
+                    "line": 185
+                },
+                {
+                    "name": "emailVerificationRequired",
+                    "line": 241
+                },
+                {
+                    "name": "isEmailVerified",
+                    "line": 249
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Services\\AllocationEngineService.php",
+            "method_total": 9,
+            "method_covered": 7,
+            "method_pct_by_line": 77.77777777777779,
+            "uncovered_methods": [
+                {
+                    "name": "isGloballyPaused",
+                    "line": 80
+                },
+                {
+                    "name": "isProviderPaused",
+                    "line": 85
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\AdminPaymentController.php",
+            "method_total": 5,
+            "method_covered": 4,
+            "method_pct_by_line": 80,
+            "uncovered_methods": [
+                {
+                    "name": "exportPdf",
+                    "line": 96
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Admin\\AdminAllocationController.php",
+            "method_total": 6,
+            "method_covered": 5,
+            "method_pct_by_line": 83.33333333333334,
+            "uncovered_methods": [
+                {
+                    "name": "status",
+                    "line": 24
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Http\\Controllers\\Recipient\\RecipientRequestController.php",
+            "method_total": 6,
+            "method_covered": 5,
+            "method_pct_by_line": 83.33333333333334,
+            "uncovered_methods": [
+                {
+                    "name": "cancelThrottle",
+                    "line": 176
+                }
+            ],
+            "test_type": "Feature",
+            "focus": "happy-path + authz + validation/error branches"
+        },
+        {
+            "path": "app\\Models\\ProviderProfile.php",
+            "method_total": 6,
+            "method_covered": 5,
+            "method_pct_by_line": 83.33333333333334,
+            "uncovered_methods": [
+                {
+                    "name": "menuItems",
+                    "line": 58
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        },
+        {
+            "path": "app\\Services\\ProviderPayoutLedgerService.php",
+            "method_total": 7,
+            "method_covered": 6,
+            "method_pct_by_line": 85.71428571428571,
+            "uncovered_methods": [
+                {
+                    "name": "sumEligibleAmount",
+                    "line": 44
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Services\\PaymentService.php",
+            "method_total": 9,
+            "method_covered": 8,
+            "method_pct_by_line": 88.88888888888889,
+            "uncovered_methods": [
+                {
+                    "name": "findPaymentByExternalIds",
+                    "line": 414
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "success/failure branches + edge cases + side-effects"
+        },
+        {
+            "path": "app\\Models\\Request.php",
+            "method_total": 11,
+            "method_covered": 10,
+            "method_pct_by_line": 90.9090909090909,
+            "uncovered_methods": [
+                {
+                    "name": "requestPaymentLinks",
+                    "line": 64
+                }
+            ],
+            "test_type": "Unit",
+            "focus": "relationships + casts + scopes/accessors"
+        }
+    ],
+    "priority_split": {
+        "P0": 10,
+        "P1": 16,
+        "P2": 30,
+        "P3": 36
+    }
+}
