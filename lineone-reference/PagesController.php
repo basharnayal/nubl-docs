@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Lineone PagesController - REFERENCE
  * Maps all Lineone demo pages to views.
@@ -6,6 +7,7 @@
  *
  * View path: pages/xxx or lineone-pages.xxx
  */
+
 namespace App\Http\Controllers;
 
 class PagesController extends Controller

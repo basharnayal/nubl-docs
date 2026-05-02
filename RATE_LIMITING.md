@@ -14,13 +14,13 @@ A single flag **`RATE_LIMITING_ENABLED`** (see `config/rate_limiting.php`) disab
    - `enabled` from `RATE_LIMITING_ENABLED`  
    - Per-limiter numeric settings (optional env overrides documented below).
 
-2. **`AppServiceProvider::configureRateLimiting()`**  
-   - Defines limiters: `registration`, `login`, `otp`, `password_reset`, `verification`, `sensitive_auth`, `payments_gateway`, `donor_payments`, `notifications`, `profile_photo`, `application_resubmit`.  
+2. **`RateLimiterServiceProvider::configureRateLimiting()`**  
+   - Defines limiters: `registration`, `login`, `otp`, `password_reset`, `verification`, `sensitive_auth`, `payments_gateway`, `donor_payments`, `guest_donations`, `notifications`, `profile_photo`, `application_resubmit`, `file_downloads`, `guest_receipt`.  
    - If `config('rate_limiting.enabled')` is false, each closure returns `Illuminate\Cache\RateLimiting\Limit::none()`.
 
 3. **Routes**  
    - `routes/auth.php`: nested `Route::middleware('throttle:{name}')->group(...)` for guest and authenticated flows.  
-   - `routes/web.php`: `throttle:{name}` on payment callbacks, donor initiate, notifications group, profile photo upload, provider registration GET, application resubmit POST.
+   - `routes/web.php`: `throttle:{name}` on payment callbacks, donor initiate, notifications group, profile photo upload, provider registration GET, application resubmit POST, sensitive file downloads (admin docs, payout receipts, user's own application files), guest donation initiate, and guest receipt-by-token lookup.
 
 4. **Tests**  
    - `phpunit.xml` sets `RATE_LIMITING_ENABLED=false` so feature tests are not flaky.
@@ -30,7 +30,7 @@ A single flag **`RATE_LIMITING_ENABLED`** (see `config/rate_limiting.php`) disab
 | File | Role |
 |------|------|
 | `config/rate_limiting.php` | **New** — master switch and limiter parameters |
-| `app/Providers/AppServiceProvider.php` | `configureRateLimiting()` + `RateLimiter::for` registrations |
+| `app/Providers/RateLimiterServiceProvider.php` | `configureRateLimiting()` + `RateLimiter::for` registrations |
 | `routes/auth.php` | Grouped guest/auth routes under named throttle middleware |
 | `routes/web.php` | Replaced raw `throttle:20,1` with `throttle:payments_gateway`; added other named throttles |
 | `phpunit.xml` | `RATE_LIMITING_ENABLED=false` for the test suite |
@@ -56,13 +56,16 @@ A single flag **`RATE_LIMITING_ENABLED`** (see `config/rate_limiting.php`) disab
 | `RATE_LIMIT_PROFILE_PHOTO_PER_MINUTE` | `20` | Profile photo upload per user per minute |
 | `RATE_LIMIT_APPLICATION_RESUBMIT_DECAY_MINUTES` | `60` | Window for resubmit POST |
 | `RATE_LIMIT_APPLICATION_RESUBMIT_MAX` | `10` | Max resubmit POSTs per window per user |
+| `RATE_LIMIT_GUEST_DONATIONS_PER_MINUTE` | `5` | Guest donation initiation per IP per minute |
+| `RATE_LIMIT_FILE_DOWNLOADS_PER_MINUTE` | `120` | Sensitive file downloads per user (or IP if guest) per minute |
+| `RATE_LIMIT_GUEST_RECEIPT_PER_MINUTE` | `30` | Public guest-donation receipt-by-token lookup per IP per minute |
 
 Only `RATE_LIMITING_ENABLED` is required in `.env`; the rest are optional overrides.
 
 ## Routes intentionally left without throttling
 
 - **`/`**, **`/locale/{locale}`**, **`/dashboard`**, role dashboards, most **GET** CRUD/admin pages — normal browsing; abuse is lower priority than auth endpoints.  
-- **`GET /approval-pending`**, **`GET /application/resubmit`**, **`GET /application/my-file/{type}`** — reads; throttle only on **POST** resubmit.  
+- **`GET /approval-pending`**, **`GET /application/resubmit`** — reads; throttle only on **POST** resubmit.  
 - **`/test-roles`**, **`/make-me-admin`** — development helpers; remove or protect in production separately.  
 - **`GET /verify-email`** (notice) — **not** in the verification throttle group; POST/resend and signed link are throttled.  
 - **`POST /logout`** — low risk; no throttle.  
